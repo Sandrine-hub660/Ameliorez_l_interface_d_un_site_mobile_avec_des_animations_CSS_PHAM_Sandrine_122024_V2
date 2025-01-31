@@ -1,0 +1,115 @@
+@use './variables' as *;
+
+@mixin layoutColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin layoutRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+@mixin bouton {
+    background: linear-gradient(to top, $primary-color, $secondary-color);
+    border-radius: 25px;
+    color: white;
+    border: transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    padding: 1em 2em 1em 2em;
+}
+
+@mixin cards {
+    border-radius: 15px;
+}
+
+@mixin pictures {
+    width: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    overflow: hidden;
+
+}
+
+@mixin footerMask{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #353535;
+    color: white;
+    padding: 0 1em 1em 1em;
+    gap:1em;
+
+    @media (min-width: 376px) {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        padding: 2em;
+        gap: 4em;
+
+    }
+
+    h4{ 
+        font-family: $font-title;
+
+        @media (min-width: 376px) {
+            margin: 20px 20px 0px 20px;
+        }
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+        font-weight: lighter;
+    }
+    
+    i{
+        margin-right: 5px;
+    }
+
+   .social{
+    @include layoutColumn();
+    align-items: flex-start;
+    gap: 10px;
+
+    @media (min-width: 376px) {
+        flex-direction: row;
+
+    }
+}
+
+    .legal{    
+        @include layoutColumn();
+        align-items: flex-start;
+        gap: 10px;
+
+        @media (min-width: 376px) {
+            flex-direction: row;
+
+        }
+    
+    }
+
+    .mentions{
+        @include layoutColumn();
+        align-items: flex-start;
+        gap: 10px;
+        @media (min-width: 376px) {
+            flex-direction: row;
+            gap: 3em;
+
+        }
+
+    }
+
+   }
+
+   @mixin commonSectionStyles {
+    margin: 40px 30px;
+    width: 70%;
+    margin: auto;
+  }
+  

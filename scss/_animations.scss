@@ -1,0 +1,220 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+
+/* #region*/ /* Like */
+
+.like {
+    font-size: 20px;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.like:hover {
+    background: linear-gradient(to top, $secondary-color, $primary-color);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0px black;
+    transform: scale(1.2);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+/* #endregion */
+
+/* #region*/ /* Commander */
+
+.menuCards {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  
+    &:hover .checkmark {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+  
+    &:hover .descriptionCard {
+      width: calc(85% - 50px);
+      padding-right: 50px;
+      overflow: hidden;
+    }
+  
+    &:hover .price {
+      transform: translateX(-50px);
+    }
+  }
+  
+.checkmark {
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+    
+.descriptionCard {
+    overflow: hidden;
+    transition: width 0.3s ease, padding-right 0.3s ease;
+}
+  
+.menuCards h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.menuCards p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.price {
+transition: transform 0.3s ease;
+white-space: nowrap;
+}
+
+/* #endregion */
+
+/* #region*/ /* Restaurants Cards  */
+
+.restaurantsCards {
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+}
+
+/* #endregion */
+
+/* #region*/ /* Menu Cards  */
+
+.menu article {
+    opacity: 0;
+    transform: translateY(20px); 
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.menu .entrees {
+    animation-delay: 0s;
+  }
+
+.menu .plats {
+    animation-delay: 0.5s;
+  }
+
+.menu .desserts {
+    animation-delay: 1s; 
+  }
+
+/* #endregion */
+
+/* #region*/ /* Button */
+
+@mixin hoverBtn($brightness: 1.2) {
+    transition: filter 0.3s ease;
+    &:hover {
+        filter: brightness($brightness);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* #endregion */
+
+/* #region*/ /* Fonction */
+
+@mixin hoverFct(){
+    transition: filter 0.3s ease;
+    &:hover {
+        color: $primary-color;
+}
+}
+
+/* #endregion */
+
+/* #region*/ /* Loader */
+
+.loader-overlay {
+    @include layoutRow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 3s forwards;
+}
+
+.circle-container {
+    @include layoutRow;
+    position: relative;
+    justify-content: center;
+}
+
+.text {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    z-index: 10;
+    font-family: $font-title;
+}
+
+.circle1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 8px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(to right, $secondary-color, $primary-color);
+    animation: rotate 4s linear infinite;
+}
+.circle2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 8px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(to right, $primary-color, $secondary-color);
+    animation: rotate 6s linear infinite;
+}
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+}
+
+
+
+/* #endregion */
+
+  

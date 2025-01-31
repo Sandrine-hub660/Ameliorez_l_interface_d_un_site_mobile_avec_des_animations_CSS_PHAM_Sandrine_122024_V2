@@ -1,0 +1,576 @@
+/* #region */ /* Fichiers*/
+/* #region*/ /* Like */
+.like {
+  font-size: 20px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.like:hover {
+  background: linear-gradient(to top, #FF79DA, #9356DC);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0px black;
+  transform: scale(1.2);
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+/* #endregion */
+/* #region*/ /* Commander */
+.menuCards {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.menuCards:hover .checkmark {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+.menuCards:hover .descriptionCard {
+  width: calc(85% - 50px);
+  padding-right: 50px;
+  overflow: hidden;
+}
+.menuCards:hover .price {
+  transform: translateX(-50px);
+}
+
+.checkmark {
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.descriptionCard {
+  overflow: hidden;
+  transition: width 0.3s ease, padding-right 0.3s ease;
+}
+
+.menuCards h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuCards p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* #endregion */
+/* #region*/ /* Restaurants Cards  */
+.restaurantsCards:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* #endregion */
+/* #region*/ /* Menu Cards  */
+.menu article {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.menu .entrees {
+  animation-delay: 0s;
+}
+
+.menu .plats {
+  animation-delay: 0.5s;
+}
+
+.menu .desserts {
+  animation-delay: 1s;
+}
+
+/* #endregion */
+/* #region*/ /* Button */
+/* #endregion */
+/* #region*/ /* Fonction */
+/* #endregion */
+/* #region*/ /* Loader */
+.loader-overlay {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 3s forwards;
+}
+
+.circle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.text {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  z-index: 10;
+  font-family: "Shrikhand", sans-serif;
+}
+
+.circle1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 8px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(to right, #FF79DA, #9356DC);
+  animation: rotate 4s linear infinite;
+}
+
+.circle2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 8px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(to right, #9356DC, #FF79DA);
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* #endregion */
+/* #endregion */
+/* #region*/ /* General */
+body {
+  font-family: "raleway", sans-serif;
+  align-items: center;
+  margin: 0;
+}
+
+p {
+  font-weight: lighter;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn {
+  background: linear-gradient(to top, #9356DC, #FF79DA);
+  border-radius: 25px;
+  color: white;
+  border: transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+  padding: 1em 2em 1em 2em;
+  transition: filter 0.3s ease;
+  margin: auto;
+  margin-top: 1em;
+}
+.btn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: white;
+}
+
+/* #endregion */
+/* #region */ /* Hearder*/
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  padding: 14px 0px 13px 0px;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #EAEAEA;
+  justify-content: center;
+  width: 100%;
+  gap: 5px;
+  padding: 10px 0px 10px 0px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+  border: 1px solid #EAEAEA;
+  background-color: transparent;
+  color: #333;
+  font-size: 1rem;
+  width: auto;
+}
+
+select:focus {
+  outline: none;
+  border-color: black;
+}
+
+/* #endregion */
+/* #region */ /* Hero */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 20px;
+  background-color: #F6F6F6;
+}
+
+/* #endregion */
+/* #region */ /* Functioning */
+.functioning {
+  width: 100%;
+}
+
+.functioningContent {
+  width: 100%;
+  margin: 5px;
+}
+@media (min-width: 420px) {
+  .functioningContent {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+.functioningButton li i {
+  transition: color 0.3s ease;
+  color: #7E7E7E;
+  margin-right: 15px;
+}
+
+.functioningButton li span {
+  transition: color 0.3s ease;
+  color: black;
+  margin-right: 15px;
+  font-size: 1em;
+}
+
+.functioningButton li:hover i,
+.functioningButton li:hover span {
+  color: #9356DC;
+}
+
+.functioningButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: list-counter;
+}
+@media (min-width: 420px) {
+  .functioningButton {
+    flex-direction: row;
+    gap: 20px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+li {
+  position: relative;
+  margin: 10px 0;
+  padding-left: 50px;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #F6F6F6;
+  counter-increment: list-counter;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+li::before {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  content: counter(list-counter);
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #9356DC;
+  color: white;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+/* #endregion */
+/* #region */ /* Restaurants */
+.restaurants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: initial;
+  background-color: #F6F6F6;
+  filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
+  margin-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+  background-color: #F6F6F6;
+}
+
+.restaurantsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: initial;
+  width: 100%;
+  margin: 50px 5px 0px 5px;
+}
+@media (min-width: 600px) {
+  .restaurantsContent {
+    max-width: 1200px;
+    margin-bottom: 50px;
+    width: 70%;
+    margin: auto;
+  }
+}
+
+.restaurantsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+@media (min-width: 420px) {
+  .restaurantsContainer {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    max-width: 1200px;
+  }
+}
+
+.restaurantsCardsContainer {
+  width: 100%;
+  gap: 20px;
+  min-height: 100px;
+}
+@media (min-width: 420px) {
+  .restaurantsCardsContainer {
+    width: calc(50% - 1em);
+    min-height: 200px;
+    min-width: 200px;
+  }
+}
+
+.restaurantsCards {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: white;
+}
+
+.restaurantsNews {
+  position: relative;
+}
+.restaurantsNews img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center 60%;
+     object-position: center 60%;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100px;
+}
+@media (min-width: 420px) {
+  .restaurantsNews img {
+    height: 180px;
+  }
+}
+.restaurantsNews .banner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #99E2D0;
+  color: #008766;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.restaurantsDetails {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  flex: 1;
+}
+
+.restaurantsText h3,
+.restaurantsText p {
+  margin: 0;
+}
+
+.restaurantsText {
+  flex: 1;
+}
+.restaurantsText h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.restaurantsText p {
+  font-size: 15px;
+}
+
+figure {
+  margin: 0;
+}
+
+/* #endregion*/
+/* #region */ /* Footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #353535;
+  color: white;
+  padding: 0 1em 1em 1em;
+  gap: 1em;
+}
+@media (min-width: 376px) {
+  footer {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    padding: 2em;
+    gap: 4em;
+  }
+}
+footer h4 {
+  font-family: "Shrikhand", sans-serif;
+}
+@media (min-width: 376px) {
+  footer h4 {
+    margin: 20px 20px 0px 20px;
+  }
+}
+footer a {
+  text-decoration: none;
+  color: white;
+  font-weight: lighter;
+}
+footer i {
+  margin-right: 5px;
+}
+footer .social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+@media (min-width: 376px) {
+  footer .social {
+    flex-direction: row;
+  }
+}
+footer .legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+@media (min-width: 376px) {
+  footer .legal {
+    flex-direction: row;
+  }
+}
+footer .mentions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+@media (min-width: 376px) {
+  footer .mentions {
+    flex-direction: row;
+    gap: 3em;
+  }
+}
+
+/* #endregion *//*# sourceMappingURL=style.css.map */

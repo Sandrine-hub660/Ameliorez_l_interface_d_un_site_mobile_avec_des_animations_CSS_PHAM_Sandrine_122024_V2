@@ -1,0 +1,319 @@
+/* #region */ /* Fichiers*/
+
+@use './variables' as *;
+@use './mixins' as *;
+@use './animations' as *; 
+
+
+/* #endregion */
+
+/* #region*/ /* General */
+
+body{
+  font-family: $font-text;
+  align-items: center;
+  margin: 0;
+}
+
+p{
+    font-weight: lighter;
+}
+
+a{
+    text-decoration: none; 
+}
+
+a:visited {
+  color: inherit; 
+  text-decoration: none; 
+}
+
+.btn{
+   @include bouton;
+  @include hoverBtn;
+  margin: auto;
+  margin-top: 1em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: white;
+}
+
+/* #endregion */
+
+/* #region */ /* Hearder*/
+
+header{
+  @include layoutColumn;
+}
+
+.logo{
+  padding: 14px 0px 13px 0px;
+}
+
+.location{
+  @include layoutRow;
+    background-color: #EAEAEA;
+    justify-content: center;
+    width: 100%;
+    gap:5px;
+    padding: 10px 0px 10px 0px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3), 
+                0 2px 4px rgba(0, 0, 0, 0.3);  
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  padding: 10px; 
+  border: 1px solid #EAEAEA; 
+  background-color: transparent; 
+  color: #333; 
+  font-size: 1rem; 
+  width: auto; 
+}
+  
+select:focus {
+  outline: none; 
+  border-color: black; 
+}
+  
+/* #endregion */
+
+/* #region */ /* Hero */
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.hero{
+  @include layoutColumn;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 20px;
+  background-color: $background-color;
+}
+
+/* #endregion */
+
+/* #region */ /* Functioning */
+
+.functioning{
+  width: 100%;
+}
+
+.functioningContent{
+  width: 100%;
+  margin: 5px;
+
+  @media (min-width: 420px) {
+    width: 70%;
+    margin: auto;
+}
+}
+            
+.functioningButton li i{
+  transition: color 0.3s ease; 
+  color:#7E7E7E; 
+  margin-right: 15px; 
+}
+
+.functioningButton li span {
+  transition: color 0.3s ease;
+  color:black; 
+  margin-right: 15px; 
+  font-size: 1em;
+}
+
+.functioningButton li:hover i,
+.functioningButton li:hover span {
+  color: $primary-color;
+}
+
+.functioningButton { 
+  @include layoutColumn;
+  justify-content: center;
+  list-style: none; 
+  margin: 0;
+  padding: 0;
+  counter-reset: list-counter; 
+
+    @media (min-width: 420px) {
+        flex-direction: row; 
+        gap: 20px;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    }
+}
+
+li {
+  position: relative;
+  margin: 10px 0; 
+  padding-left: 50px;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: $background-color; 
+  counter-increment: list-counter;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+
+    &::before {
+      @include layoutRow;
+      content: counter(list-counter); 
+      position: absolute;
+      left: -13px; 
+      top: 50%;
+      transform: translateY(-50%); 
+      background-color: $primary-color;
+      color: white; 
+      width: 20px;
+      height: 20px;
+      justify-content: center;
+      font-size: 12px;
+      border-radius: 50%;
+      }    
+}
+    
+
+
+
+/* #endregion */
+
+/* #region */ /* Restaurants */
+
+.restaurants {
+  @include layoutColumn;
+  align-items: initial;
+  background-color: $background-color;
+  filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
+  margin-top: 50px ;
+  padding-bottom: 50px;
+  width: 100%;
+  background-color: $background-color;
+}
+
+.restaurantsContent {
+    @include layoutColumn; 
+    align-items: initial;
+    width: 100%; 
+    margin: 50px 5px 0px 5px;
+
+      @media (min-width: 600px) {
+      max-width: 1200px; 
+      margin-bottom: 50px;
+      width: 70%; 
+      margin: auto;
+    }
+  }
+
+
+.restaurantsContainer {
+  @include layoutColumn;
+  gap: 20px;
+  width: 100%;
+
+    @media (min-width: 420px) {
+      display: flex;
+      flex-flow:row wrap;
+      margin: 0 auto;
+      gap: 20px;
+      width: 100%;
+      justify-content: space-between; 
+      max-width: 1200px;
+    }
+}
+
+.restaurantsCardsContainer {
+  width: 100%; 
+  gap: 20px; 
+  min-height: 100px;
+
+  @media (min-width: 420px) {
+    width: calc(50% - 1em); 
+    min-height: 200px;
+    min-width: 200px; 
+  }
+}
+
+.restaurantsCards {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: white;
+}
+
+.restaurantsNews {
+  position: relative;
+
+  img {
+    @include pictures();
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    width: 100%; 
+    height: 100px; 
+  
+    @media (min-width: 420px) {
+      height: 180px; 
+    }
+  }
+
+  .banner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: $tertiary-color;
+    color: #008766;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+}
+
+.restaurantsDetails {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  flex: 1;
+}
+
+.restaurantsText h3,
+.restaurantsText p {
+  margin: 0;
+}
+
+.restaurantsText {
+  flex: 1;
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+/* #endregion*/
+
+/* #region */ /* Footer */
+
+footer{
+  @include footerMask;
+}
+
+/* #endregion */
